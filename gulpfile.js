@@ -1,7 +1,4 @@
 
-/*
-* Dependencias
-*/
 var gulp        = require('gulp');
 var gulpFilter  = require('gulp-filter')
 var concat      = require('gulp-concat');
@@ -21,24 +18,26 @@ var connect = require('gulp-connect');
 
 var path = {
     scripts : {
-        src     : 'app/scripts/*.ts',
-        concat  : 'main.js',
-        dest    : 'js/',
+        src  : 'app/scripts/*.ts',
+        out  : 'main.js',
+        dest : 'public/js/',
+        vendor: 'vendor.js'
     },
     styles  : {
-        src     : 'app/styles/**/*.scss',
-        dest    : 'css/',
+        src  : 'app/styles/**/*.scss',
+        dest : 'public/css/',
     },
     views   : {
-        src     : 'app/views/**/*.jade',
-        dest    : ''
+        src  : 'app/views/**/*.jade',
+        dest : 'public/'
     },
 };
 
 gulp.task('webserver', function() {
-    // var gulpFilter = require('gulp-filter')
     connect.server({
-        livereload: true
+        root: 'public',
+        livereload: true,
+        directoryListing: true
     });
 });
  
@@ -47,34 +46,22 @@ gulp.task('main-bower-files', function() {
     return gulp.src('./bower.json')
         .pipe(mainBowerFiles( ))
         .pipe(uglify())
-        .pipe(concat('vendor.js')) //aqui se juntan todos los scripts
-        .pipe(gulp.dest('js/'));
+        .pipe(concat(path.scripts.vendor))
+        .pipe(gulp.dest(path.scripts.dest));
 });
 
-
-/*
-* Configuración de la tarea 'scripts'
-*/
 gulp.task('scripts', function () {
-    return gulp.src('app/scripts/*.ts') //archivos a concatenar
-        
-        // .pipe(concat('main.js')) //aqui se juntan todos los scripts
-        // .pipe(uglify())
-        // .pipe(sourcemaps.write('js/'))
-        // .pipe(debug({verbose: true}))
+    return gulp.src(path.scripts.src)
         .pipe(sourcemaps.init())
         .pipe(ts({
 			noImplicitAny: true,
-			out: 'main.js'
+			out: path.scripts.out
 		}))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('js/'))
+        .pipe(gulp.dest(path.scripts.dest))
         .pipe(connect.reload());
 });
 
-/*
-* Configuración de la tarea 'sass'
-*/
 gulp.task('styles', function () {
     var filter = gulpFilter(['*', '_*.*']);
     return gulp.src(path.styles.src)
@@ -90,9 +77,6 @@ gulp.task('styles', function () {
         .pipe(connect.reload());
 });
 
-/*
-* Configuración de la tarea 'html'
-*/
 gulp.task('views', function() {
     var filter = gulpFilter(['*', '_*.*']);
     return gulp.src(path.views.src)
@@ -110,9 +94,5 @@ gulp.task('watch', function () {
     gulp.watch(path.styles.src, ['styles']);
     gulp.watch(path.scripts.src, ['scripts']);
 });
-
-
-
-
 
 gulp.task('default', ['main-bower-files', 'scripts', 'styles', 'views', 'webserver', 'watch']);

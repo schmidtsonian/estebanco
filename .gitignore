@@ -1,9 +1,5 @@
-# Exclude OS X folder attributes
 .DS_Store
-
-# Exclude distribution folder
-bower_components
-css
-js
+.lock-wscript
 node_modules
-*.html
+bower_components
+public
