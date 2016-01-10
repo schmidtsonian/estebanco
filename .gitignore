@@ -1,0 +1,9 @@
+# Exclude OS X folder attributes
+.DS_Store
+
+# Exclude distribution folder
+bower_components
+css
+js
+node_modules
+*.html

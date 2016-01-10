@@ -1,0 +1,58 @@
+extends layouts/_index.jade
+
+block body
+    div(id="container")
+        div(class="cols-2 cols-home")
+            div(class="col col-home")
+                div(class="rows-2 rows-home")
+                    
+                    section(id="block-home", class="row")
+                    
+                        - for ( var i = 1; i <= 12; i++)
+                            span(class="block-home-#{i}")
+                        
+                        div
+                            div(class="center-left block")
+                            div(class="center-right block")
+                        
+                        header
+                            - for ( var i = 1; i <= 3; i++)
+                                h1(class="center") Estebanco
+                                
+                        p(class="subtitle")
+                            i C
+                            i S
+                            i S
+                            i 3
+                    
+                    section(id="block-projects", class="row")
+                        a(href="some-projects/")
+                            h2(class="center") Some <span>Projects</span>
+                    
+            
+            div(class="col col-home")
+                div(class="rows-2 rows-home")
+                     
+                     a(href="about-me/", id="block-about", class="row")
+                        div(class="bg full-all")
+                            - for ( var i = 0; i <= 103; i++)
+                                div(id="c-#{i}", class="circle center")
+                            
+                        header
+                           h2(class="center") About <span>Me</span>
+                        p(class="subtitle")
+                            i G
+                            i R
+                            i E
+                            i E
+                            i N
+                            i S
+                            i O
+                            i C
+                            i K
+                     
+                     section(id="block-articles", class="row")
+                        header
+                            a(href="a-few-articles/")
+                                h2(class="center") A Few <span>Articles</span>
+                
