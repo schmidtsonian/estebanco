@@ -17,12 +17,6 @@
 /* ==========================================================================
    0. ELEMENT
    ========================================================================== */
-
-#container{
-   width: 100%;
-   height: 100%;
-   position: absolute;
-}
 .cols-home, .col-home, .rows-home{
    height: 100%;
 }
@@ -92,14 +86,14 @@
         //   background-color 0.15s 0.25s $ease-in-out-cubic,
         //   opacity 0.25s 0.5s $ease-in-out-cubic
           
-          all .05s cubic-bezier(0.68, -0.55, 0.265, 1.55),
-          all .05s cubic-bezier(0.68, -0.55, 0.265, 1.55),
-          all .05s cubic-bezier(0.68, -0.55, 0.265, 1.55),
-          all .45s 0.25s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+          top .05s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+          left .05s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+          right .05s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+          height .45s 0.25s cubic-bezier(0.68, -0.55, 0.265, 1.55),
           width .45s 0.45s cubic-bezier(0.68, -0.55, 0.265, 1.55),
           all .15s 0.25s $ease-in-out-back,
-          all 0.15s 0.25s $ease-in-out-cubic,
-          all 0.25s 0.5s $ease-in-out-cubic
+          background-color 0.15s 0.25s $ease-in-out-cubic,
+          opacity 0.25s 0.5s $ease-in-out-cubic
        );
        &:first-child{
           left: -50px;

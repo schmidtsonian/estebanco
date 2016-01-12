@@ -6,11 +6,12 @@ html(lang="en")
         meta(name="description" content=Description)
         meta(name="keywords", content=Keywords)
 
-        link(rel="icon", type="image/#{FaviconType}", href=Favicon)
+        link(rel="icon", type="/image/#{FaviconType}", href=Favicon)
         link(rel="stylesheet", type="text/css", href="http://fonts.googleapis.com/css?family=Oswald|Quattrocento")
-        link(rel="stylesheet", type="text/css", href="css/main.css")
+        link(rel="stylesheet", type="text/css", href="/css/main.css")
 
     body
-        block body
-        script(src="js/vendor.js")
-        script(src="js/main.js")
+        #container.full
+            block body
+        script(src="/js/vendor.js")
+        script(src="/js/main.js")

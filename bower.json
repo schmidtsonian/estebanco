@@ -4,20 +4,13 @@
   "main": "",
   "dependencies": {
     "jquery": "~2.1.1",
-    "gsap": "1.12.1",
-    "threejs": "*"
+    "gsap": "1.12.1"
   },
   "overrides": {
     "gsap": {
       "main": [
         "./src/uncompressed/TweenMax.js"
       ]
-    },
-    "BOWER-PACKAGE": {
-        "main": {
-            "development": "file.js",
-            "production": "file.min.js"
-        }
     }
   }
 }

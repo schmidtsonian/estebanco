@@ -8,7 +8,6 @@ var jade        = require('gulp-jade');
 var ts          = require('gulp-typescript');
 var mainBowerFiles = require('gulp-main-bower-files');
 var bourbon     = require('node-bourbon');
-bourbon.with('app/styles/')
 
 var sourcemaps  = require('gulp-sourcemaps');
 var rename      = require('gulp-rename');
@@ -18,7 +17,7 @@ var connect = require('gulp-connect');
 
 var path = {
     scripts : {
-        src  : 'app/scripts/*.ts',
+        src  : 'app/typescripts/*.ts',
         out  : 'main.js',
         dest : 'public/js/',
         vendor: 'vendor.js'
@@ -63,9 +62,8 @@ gulp.task('scripts', function () {
 });
 
 gulp.task('styles', function () {
-    var filter = gulpFilter(['*', '_*.*']);
     return gulp.src(path.styles.src)
-        .pipe(filter)
+        .pipe(gulpFilter(['*', '_*.*']))
         .pipe(sourcemaps.init())
         .pipe(sass({ 
             includePaths: require('node-bourbon').includePaths
@@ -78,14 +76,13 @@ gulp.task('styles', function () {
 });
 
 gulp.task('views', function() {
-    var filter = gulpFilter(['*', '_*.*']);
     return gulp.src(path.views.src)
-    .pipe(jade({
-        pretty: true
-    }))
-    .pipe(filter)
-    .pipe(gulp.dest(path.views.dest))
-    .pipe(connect.reload());
+            .pipe(jade({
+                pretty: true
+            }))
+            .pipe(gulpFilter(['*', '*/*', '!_*.*', '!*/_*.*']))
+            .pipe(gulp.dest(path.views.dest))
+            .pipe(connect.reload());
 });
 
 gulp.task('watch', function () {

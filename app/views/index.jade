@@ -1,46 +1,45 @@
 extends layouts/_index.jade
 
 block body
-    div(id="container")
-        div(class="cols-2 cols-home")
-            div(class="col col-home")
-                div(class="rows-2 rows-home")
+    #container__home.full
+        .cols-2.cols-home
+            .col.col-home
+                .rows-2.rows-home
                     
-                    section(id="block-home", class="row")
-                    
+                    section#block-home.row
                         - for ( var i = 1; i <= 12; i++)
                             span(class="block-home-#{i}")
                         
                         div
-                            div(class="center-left block")
-                            div(class="center-right block")
+                            .center-left.block
+                            .center-right.block
                         
                         header
                             - for ( var i = 1; i <= 3; i++)
-                                h1(class="center") Estebanco
+                                h1.center Estebanco
                                 
-                        p(class="subtitle")
+                        p.subtitle
                             i C
                             i S
                             i S
                             i 3
                     
-                    section(id="block-projects", class="row")
-                        a(href="some-projects/")
-                            h2(class="center") Some <span>Projects</span>
+                    section#block-experiments.row
+                        a(href="some-experiments/", title="Some Experiments")
+                            h2.center Some <span>Experiments</span>
                     
             
-            div(class="col col-home")
-                div(class="rows-2 rows-home")
+            .col.col-home
+                .rows-2.rows-home
                      
-                     a(href="about-me/", id="block-about", class="row")
-                        div(class="bg full-all")
+                     a#block-about.row(href="about-me/", title="About Me")
+                        .bg.full-all
                             - for ( var i = 0; i <= 103; i++)
-                                div(id="c-#{i}", class="circle center")
+                                .circle.center(id="c-#{i}")
                             
                         header
-                           h2(class="center") About <span>Me</span>
-                        p(class="subtitle")
+                           h2.center About <span>Me</span>
+                        p.subtitle
                             i G
                             i R
                             i E
@@ -51,8 +50,8 @@ block body
                             i C
                             i K
                      
-                     section(id="block-articles", class="row")
+                     section#block-code.row
                         header
-                            a(href="a-few-articles/")
-                                h2(class="center") A Few <span>Articles</span>
+                            a(href="some-code/", title="Some Code")
+                                h2(class="center") Some <span>Code</span>
                 
