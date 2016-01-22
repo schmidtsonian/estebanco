@@ -77,21 +77,11 @@
        opacity: 0;
        @include transform(rotate(-25deg));
        @include transition(
-        //   top .65s cubic-bezier(0.68, -0.55, 0.265, 1.55),
-        //   left .65s cubic-bezier(0.68, -0.55, 0.265, 1.55),
-        //   right .65s cubic-bezier(0.68, -0.55, 0.265, 1.55),
-        //   height .45s 0.25s cubic-bezier(0.68, -0.55, 0.265, 1.55),
-        //   width .45s 0.45s cubic-bezier(0.68, -0.55, 0.265, 1.55),
-        //   transform .15s 0.25s $ease-in-out-back,
-        //   background-color 0.15s 0.25s $ease-in-out-cubic,
-        //   opacity 0.25s 0.5s $ease-in-out-cubic
-          
           top .05s cubic-bezier(0.68, -0.55, 0.265, 1.55),
           left .05s cubic-bezier(0.68, -0.55, 0.265, 1.55),
           right .05s cubic-bezier(0.68, -0.55, 0.265, 1.55),
           height .45s 0.25s cubic-bezier(0.68, -0.55, 0.265, 1.55),
           width .45s 0.45s cubic-bezier(0.68, -0.55, 0.265, 1.55),
-          all .15s 0.25s $ease-in-out-back,
           background-color 0.15s 0.25s $ease-in-out-cubic,
           opacity 0.25s 0.5s $ease-in-out-cubic
        );
@@ -104,6 +94,7 @@
           top: -50%;
        }
     }
+    &.active,
     &:hover{
        .block{
           height: 50%;
@@ -129,18 +120,22 @@
        opacity: 0;
        color: $color-red;
     }
-    &:hover h1:first-child{
-      @include animation(open-1 1s);
-    }
-    &:hover h1:last-child{
-      @include animation(open-2 1s);
-    }
-    &:hover h1:nth-child(1),
-    &:hover h1:nth-child(3){
-       opacity: 1;
-    }
-    &:hover h1:nth-child(2){
-       opacity: 0;
+    &.active,
+    &:hover{
+        
+        h1:first-child{
+            @include animation(open-1 1s);
+        }
+        h1:last-child{
+            @include animation(open-2 1s);
+        }
+        h1:nth-child(1),
+        h1:nth-child(3){
+            opacity: 1;
+        }
+        h1:nth-child(2){
+            opacity: 0;
+        }
     }
     
     span{
@@ -224,6 +219,7 @@
        }
     }
     
+    &.active,
     &:hover{
        .block-home-1{
           @include transform(rotate(-25deg) translateX(10%));
@@ -278,8 +274,8 @@
     }
  }
  
-#block-about{
-}
+// #block-about{
+// }
 #c-0, #c-1{
   opacity: 0;
   width: 0px;

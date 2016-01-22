@@ -53,13 +53,12 @@ module index {
 			tl.to(["#c-2", "#c-3"], 0.15, { opacity: 0, width: "150px", height: "150px", delay: 0.05, ease: Elastic.easeOut });
 
 
-			
 			$("#block-about")
-				.mouseenter( () => { tl.play(); })
-				.mouseleave(() => { tl.seek(0); tl.stop(); });
-			
+				.on("mouseenter", () => { tl.play(); })
+				.on("mouseleave", () => { tl.seek(0); tl.stop(); });
+
+            $("#block-home").on("click", function() { $(this).toggleClass("active"); });
 			/*var blocks = $("#block-about .bg span.first");
-			
 			
 			blocks.each( function(i, el) {
 				TweenLite.set($(el), {rotation: Math.floor((Math.random() * 10) + 360), x: Math.floor((Math.random() * 10) + 150), y: Math.floor((Math.random() * 10) + 300)} )

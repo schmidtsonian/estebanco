@@ -49,6 +49,8 @@ gulp.task('main-bower-files', function() {
         .pipe(gulp.dest(path.scripts.dest));
 });
 
+//TO-DO:
+//watch all typescript files and reload on save
 gulp.task('scripts', function () {
     return gulp.src(path.scripts.src)
         .pipe(sourcemaps.init())

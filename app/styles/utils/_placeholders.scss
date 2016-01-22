@@ -119,18 +119,22 @@
         height: 50%;
     }
 }
-.row:hover{
-    p.subtitle{
-      i{
-         opacity: 1;
-         @include transform(translateX(0px));
-         @for $i from 1 through 13{
-            &:nth-child(#{$i}){
-              @include transition-delay(#{0.4 + ($i/10)}s);   
+.row{
+    &.active,
+    &:hover{
+        
+        p.subtitle{
+            i{
+                opacity: 1;
+                @include transform(translateX(0px));
+                @for $i from 1 through 13{
+                    &:nth-child(#{$i}){
+                        @include transition-delay(#{0.4 + ($i/10)}s);   
+                    }
+                }
             }
-         }
-      }
-   }
+        }
+    }
 }
 .full-all{
     position: absolute;
