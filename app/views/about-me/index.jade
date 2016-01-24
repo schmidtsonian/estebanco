@@ -2,13 +2,14 @@ extends ../layouts/_index.jade
 
 block body
     #container__aboutme.container__aboutme
-        .full
-            h1 About me
-            h2 Hello, my name is Esteban
-        .full
+        header.full.flex-container
+            h1.half About me
+            h2.half hello, my name is <span>Esteban</span>
+        .full.flex-container
             h2 I'm a Front End Developer from Mexico
-        .full
+        .full.flex-container
             h2 Dev socializing
+            p as
             ul
                 li
                     a(href="https://github.com/schmidtsonian", target="_blank", title="@schmidtsonian on Github") GitHub

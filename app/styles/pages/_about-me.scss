@@ -1,5 +1,21 @@
 .container__aboutme{
     height: 300%;
-    .full:nth-child(2){ top: 100% }
-    .full:nth-child(3){ top: 200% }
+    header{
+        .half{
+            height: 50%;
+            &:first-child{
+                justify-content: space-around;
+                display: flex;
+                align-items: flex-end;
+            }
+        }
+    }
+    .full:nth-child(2){ 
+        top: 100%;
+        background-color: $color-blue;
+        h2{ color: white; }
+    }
+    .full:nth-child(3){ 
+        top: 200% 
+    }
 }
