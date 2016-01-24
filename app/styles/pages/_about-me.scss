@@ -1,6 +1,9 @@
 .container__aboutme{
     height: 300%;
     header{
+        h1{
+            font-size: 16px;
+        }
         .half{
             height: 50%;
             &:first-child{
@@ -13,7 +16,10 @@
     .full:nth-child(2){ 
         top: 100%;
         background-color: $color-blue;
-        h2{ color: white; }
+        h2{ 
+            color: white;
+            span{color:#46433A;} 
+        }
     }
     .full:nth-child(3){ 
         top: 200% 
