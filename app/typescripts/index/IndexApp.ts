@@ -58,6 +58,11 @@ module index {
 				.on("mouseleave", () => { tl.seek(0); tl.stop(); });
 
             $("#block-home").on("click", function() { $(this).toggleClass("active"); });
+            
+            $("#button-menu").on("click", function(){
+                $(this).toggleClass("active");
+                $("#main-navigation").toggleClass("active");
+            })
 			/*var blocks = $("#block-about .bg span.first");
 			
 			blocks.each( function(i, el) {
