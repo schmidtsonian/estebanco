@@ -1,18 +1,19 @@
-/**
-* IndexApp.ts
-*
-*/
+/// <reference path="../common/Router.ts" />
 
 module index {
+    
+    import Router = common.Router;
 
 	export class IndexApp {
 		
+        private router:Router;
 		constructor () {
+            
+            this.router = new Router();
 		}
 
 		init ():void {
 			
-			// TweenLite.set(["#c-0", "#c-1"], {x:"150%", y: "100%"});
 			var tl = new TimelineMax({paused: true });
 			
 			tl.staggerTo(["#c-0", "#c-1"], 0.55, { borderRadius: "0", width: "600px", height: "600px", opacity: 1 }, 0.2);
@@ -78,6 +79,23 @@ module index {
 			blocks
 				.mouseenter( function() { TweenLite.to( $(this).find("span.second"), 0.25, {rotationY: 75, opacity: Math.random(), transformPerspective:200, transformOrigin:"left top", ease:Quart.easeInOut} ); } )
 				.mouseleave( function() { TweenLite.to( $(this).find("span.second"), 0.25, {rotationY: 0, opacity: Math.random(),  transformOrigin:"left top", ease:Quart.easeInOut} ); } );*/
-		}
+            this.router
+                .add(/about-me/, function() {
+                    $("#button-menu").removeClass("active");
+                    $("#main-navigation").removeClass("active");
+                    $("#button-menu").css({left: "0"});
+                })
+                .add(function() {
+                    $("#button-menu").removeClass("active");
+                    $("#main-navigation").removeClass("active");
+                    $("#button-menu").css({left: "-60px"});
+                })
+                .listen();
+            $("a.pushstate").on("click", (e)=>{
+                e.preventDefault();
+                this.router.navigate($(e.target).attr("href"));
+            })
+            this.router.check();
+        }
 	}
 }
