@@ -3,7 +3,7 @@
  * http://krasimirtsonev.com/blog/article/A-modern-JavaScript-router-in-100-lines-history-api-pushState-hash-url
  */
 
-module common.core {
+module common {
 
     export interface IRouterOptions {
         mode?: string;
