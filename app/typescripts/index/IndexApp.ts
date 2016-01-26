@@ -1,3 +1,6 @@
+/// <reference path="../definitions/greensock/greensock.d.ts" />
+/// <reference path="../definitions/jquery/jquery.d.ts" />
+
 /// <reference path="../common/Router.ts" />
 
 module index {
