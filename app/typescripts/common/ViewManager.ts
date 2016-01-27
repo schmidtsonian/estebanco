@@ -7,7 +7,7 @@ module common {
     export class ViewManager {
 
         private views: Array<IView> = [];
-        private currentView: IView = null;
+        currentView: IView = null;
 
         addView = (id: number, view: IView) => {
             this.views[id] = view;

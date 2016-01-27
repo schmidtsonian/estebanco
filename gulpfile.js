@@ -55,7 +55,7 @@ gulp.task('scripts', function () {
     return gulp.src(path.scripts.src)
         .pipe(sourcemaps.init())
         .pipe(ts({
-            target: "ES6",
+            target: "ES5",
 			noImplicitAny: true,
 			out: path.scripts.out
 		}))

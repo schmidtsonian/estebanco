@@ -54,7 +54,7 @@ module common {
          */
         protected close_hook(d: JQueryDeferred<{}>): void { d.resolve(); }
         
-        protected bind():void { }
+        bind():void { }
         protected unbind():void { }
     }
 }

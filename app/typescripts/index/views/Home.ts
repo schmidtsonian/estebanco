@@ -4,8 +4,7 @@ module views{
     
     export class Home extends common.View{
         
-        protected bind():void {
-            
+        bind():void {
             var tl = new TimelineMax({paused: true });
 			
 			tl.staggerTo(["#c-0", "#c-1"], 0.55, { borderRadius: "0", width: "600px", height: "600px", opacity: 1 }, 0.2);
@@ -45,17 +44,10 @@ module views{
 			tl.to(["#c-2", "#c-3"], 0.25, { width: "20px", height: "20px", delay: 0.05, ease: Cubic.easeOut });
 			tl.to(["#c-2", "#c-3"], 0.15, { opacity: 0, width: "150px", height: "150px", delay: 0.05, ease: Elastic.easeOut });
 
-
-			$("#block-about")
-				.on("mouseenter", () => { tl.play(); })
-				.on("mouseleave", () => { tl.seek(0); tl.stop(); });
-
+            $("#block-about")
+                .on("mouseenter", () => { tl.play(); })
+                .on("mouseleave", () => { tl.seek(0); tl.stop(); });
             $("#block-home").on("click", function() { $(this).toggleClass("active"); });
-            
-            $("#button-menu").on("click", function(){
-                $(this).toggleClass("active");
-                $("#main-navigation").toggleClass("active");
-            })
 			/*var blocks = $("#block-about .bg span.first");
 			
 			blocks.each( function(i, el) {
