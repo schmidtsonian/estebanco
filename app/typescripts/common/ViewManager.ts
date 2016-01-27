@@ -9,39 +9,51 @@ module common {
         private views: Array<IView> = [];
         private currentView: IView = null;
 
-        addView = (id:number, view: IView) => {
+        addView = (id: number, view: IView) => {
             this.views[id] = view;
         };
-
-        getViewById(id:number):IView {
+        /**
+         * @param  {number} id
+         * @returns IView
+         */
+        getViewById(id: number): IView {
             return this.views[id];
         }
-
-        isViewOpen(id:number):boolean{
+        /**
+         * @param  {number} id
+         * @returns boolean
+         */
+        isViewOpen(id: number): boolean {
             return this.getViewById(id).isOpen;
         }
-
-        closeView(id:number):JQueryPromise<{}> {
+        /**
+         * @param  {number} id
+         * @returns JQueryPromise
+         */
+        closeView(id: number): JQueryPromise<{}> {
             var view = this.getViewById(id);
             view.isOpen = false;
             return view.close();
         }
-
-        openView = (id:number):JQueryPromise<{}> => {
+        /**
+         * @param  {number} id
+         * @returns JQueryPromise
+         */
+        openView = (id: number): JQueryPromise<{}> => {
 
             var defer = $.Deferred();
-            
-            if(this.currentView != null && (this.getViewById(id) === this.currentView)){
+
+            if (this.currentView != null && (this.getViewById(id) === this.currentView)) {
                 var defer = $.Deferred();
                 defer.resolve();
-                
+
                 return defer.promise();
             }
 
             if (this.currentView != null) {
 
                 return this.currentView.close()
-                    .then( () => {
+                    .then(() => {
                         this.currentView = this.getViewById(id);
                         return this.currentView.open();
                     })
@@ -49,7 +61,8 @@ module common {
             this.currentView = this.getViewById(id);
             return this.currentView.open();
         };
-        closeCurrentView = ():JQueryPromise<{}> => {
+
+        closeCurrentView = (): JQueryPromise<{}> => {
 
             if (this.currentView != null) {
                 var activeView = this.currentView;
@@ -58,7 +71,7 @@ module common {
             }
         };
 
-        reset () : void {
+        reset(): void {
 
             this.currentView = null;
         }
