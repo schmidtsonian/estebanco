@@ -156,7 +156,7 @@
           height: 5px;
        }
        &.block-home-3{
-          @include transform(rotate(-25deg) translateX(100%) translateY(50px));
+          @include transform(rotate(-25deg) translateX(120%) translateY(50px));
           width: 90%;
           height: 40px;
        }
@@ -294,4 +294,20 @@
 #c-3{
   opacity: 0;
   @include transform(translateX(150px) translateY(50px) scale(0.1))
+}
+
+@media screen and (max-width: 890px) {
+    .container__home{
+        .cols-2 .col{
+            width: 100%;
+        }
+    }
+    .block-code,
+    .block-experiments{
+        background-color: $color-blue;
+        h2{
+            color: white;
+            span{ color: $color-brown }
+        }
+    }
 }

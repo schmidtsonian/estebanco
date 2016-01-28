@@ -1,7 +1,7 @@
 extends layouts/_index.jade
 
 block body
-    #container__home.full
+    #container__home.container__home.full
         .cols-2.cols-home
             .col.col-home
                 .rows-2.rows-home
@@ -24,7 +24,7 @@ block body
                             i S
                             i 3
                     
-                    section#block-experiments.row
+                    section#block-experiments.block-experiments.row
                         a(href="some-experiments/", title="Some Experiments")
                             h2.center Some <span>Experiments</span>
                     
@@ -50,8 +50,7 @@ block body
                             i C
                             i K
                      
-                     section#block-code.row
+                     a#block-code.block-code.row(href="some-code/", title="Some Code")
                         header
-                            a(href="some-code/", title="Some Code")
-                                h2(class="center") Some <span>Code</span>
+                            h2(class="center") Some <span>Code</span>
                 
