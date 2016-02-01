@@ -17,7 +17,8 @@ module index {
 
     export enum MainViews {
         HomeView,
-        AboutMeView
+        AboutMeView,
+        SomeCode
     }
 	export class IndexApp {
 		
@@ -26,6 +27,7 @@ module index {
         
         private HomeView:HomeView;
         private AboutMeView:View;
+        private SomeCode:View;
         
 		constructor () {
             
@@ -36,11 +38,13 @@ module index {
 		init ():void {
 			
             var mainContainer = $("#container");
-            this.HomeView = new HomeView("/index.html #container__aboutme", mainContainer );
+            this.HomeView = new HomeView("/index.html #container__home", mainContainer );
             this.AboutMeView = new View("/about-me/index.html #container__aboutme", mainContainer );
+            this.SomeCode = new View("/about-me/index.html #container__somecode", mainContainer );
             
             this.viewManager.addView(MainViews.HomeView, this.HomeView );
             this.viewManager.addView(MainViews.AboutMeView, this.AboutMeView );
+            this.viewManager.addView(MainViews.SomeCode, this.SomeCode );
             
 
             $("#button-menu").on("click", function(){
@@ -50,11 +54,20 @@ module index {
             
             var isFirstLoad = true;
             
+            $("#button-menu").css({left: "0"});
+            $("#button-menu").removeClass("active");
+            $("#main-navigation").removeClass("active");
             this.router
                 .add(/about-me/, () =>{
-                    $("#button-menu").removeClass("active");
-                    $("#main-navigation").removeClass("active");
-                    $("#button-menu").css({left: "0"});
+                    
+                    if(isFirstLoad){
+                        isFirstLoad = false;
+                        this.viewManager.currentView = this.AboutMeView;
+                    }else{
+                        this.viewManager.openView(MainViews.AboutMeView);
+                    }
+                })
+                .add(/some-code/, () =>{
                     
                     if(isFirstLoad){
                         isFirstLoad = false;
@@ -64,8 +77,6 @@ module index {
                     }
                 })
                 .add(() =>{
-                    $("#button-menu").removeClass("active");
-                    $("#main-navigation").removeClass("active");
                     $("#button-menu").css({left: "-60px"});
                     if(isFirstLoad){
                         isFirstLoad = false;
