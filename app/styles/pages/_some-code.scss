@@ -1,0 +1,73 @@
+$g1: #113F8C;
+$g2: #01A4A4;
+$g3: #00A1CB;
+$g4: #61AE24;
+$g5: #D0D102;
+$g6: #32742C;
+$g7: #D70060;
+$g8: #E54028;
+$g9: #F18D05;
+$g10: #616161;
+
+$grid-colours: $g1, $g2, $g3, $g4, $g5, $g6, $g7, $g8, $g9, $g10; 
+
+.container__somecode{
+    
+    .grid{
+        position: relative;
+    }
+    .block{
+        width: 20%;
+        height: 135px;
+        float: left;
+    }
+    @for $i from 1 through length($grid-colours){
+        .block--#{$i}{
+            background-color: nth($grid-colours, $i);
+        }
+    }
+    h1{
+        display: block;
+        height: 100px;
+        line-height: 100px;
+    }
+    h2, h3, li{
+        color: white;
+    }
+    h2{
+        padding-bottom: 0px;
+        font-size: 16px;
+    }
+    h3{
+        text-align: center;
+    }
+    h2, h3, ul{
+        padding: 0 10px;
+    }
+    li{
+        display: inline;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 890px) {
+    .container__somecode{
+        .block{
+            width: 25%
+        }
+    }
+}
+@media screen and (max-width: 760px) {
+    .container__somecode{
+        .block{
+            width: 50%
+        }
+    }
+}
+@media screen and (max-width: 480px) {
+    .container__somecode{
+        .block{
+            width: 100%
+        }
+    }
+}
