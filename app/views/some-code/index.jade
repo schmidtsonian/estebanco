@@ -2,8 +2,8 @@ extends ../layouts/_index.jade
 
 block body
     #container__somecode.container__somecode
-        
-        h1.half Some Code
+        header.full.flex-container
+            h1.half Some <span>Code</span>
         .grid
             a(href="https://github.com/schmidtsonian/Games/", target="_blank". title="Falling Skyes").block.block--1.flex-container
                 h2 Falling Skyes
@@ -24,13 +24,13 @@ block body
                     li #css
                     li #html
                     li #typescript
-            // a(href="#", target="_blank". title="").block.block--4.flex-container
-            //     h2 title 4
-            //     h3 description
-            //     ul
-            //         li #tag1
-            //         li #tag2
-            //         li #tag3
+            a(href="https://github.com/schmidtsonian/elixir", target="_blank". title="Elixir Journal").block.block--4.flex-container
+                h2 Elixir Journal
+                h3 description
+                ul
+                    li #Elixir
+                    li #Vagrant
+                    li #GitHub
             // a(href="#", target="_blank". title="").block.block--5.flex-container
             //     h2 title 5
             //     h3 description

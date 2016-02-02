@@ -14,11 +14,13 @@ $grid-colours: $g1, $g2, $g3, $g4, $g5, $g6, $g7, $g8, $g9, $g10;
 .container__somecode{
     
     .grid{
-        position: relative;
+        position: absolute;
+        width: 100%;
+        top: 100%;
     }
     .block{
-        width: 20%;
-        height: 135px;
+        width: 25%;
+        height: 235px;
         float: left;
     }
     @for $i from 1 through length($grid-colours){
@@ -30,12 +32,15 @@ $grid-colours: $g1, $g2, $g3, $g4, $g5, $g6, $g7, $g8, $g9, $g10;
         display: block;
         height: 100px;
         line-height: 100px;
+        span{
+            color: $color-red;
+        }
     }
     h2, h3, li{
         color: white;
     }
     h2{
-        padding-bottom: 0px;
+        height: auto;
         font-size: 16px;
     }
     h3{
@@ -43,6 +48,7 @@ $grid-colours: $g1, $g2, $g3, $g4, $g5, $g6, $g7, $g8, $g9, $g10;
     }
     h2, h3, ul{
         padding: 0 10px;
+        width: auto;
     }
     li{
         display: inline;
@@ -50,13 +56,13 @@ $grid-colours: $g1, $g2, $g3, $g4, $g5, $g6, $g7, $g8, $g9, $g10;
     }
 }
 
-@media screen and (max-width: 890px) {
-    .container__somecode{
-        .block{
-            width: 25%
-        }
-    }
-}
+// @media screen and (max-width: 890px) {
+//     .container__somecode{
+//         .block{
+//             width: 25%
+//         }
+//     }
+// }
 @media screen and (max-width: 760px) {
     .container__somecode{
         .block{
