@@ -1,11 +1,11 @@
 .main-loader{
     top: 0;
-    left: -100%;
+    // left: -100%;
     background-color: $color-brown;
     span{
         color: $color-cream
     }
-    &.active{
-        left: 0;
-    }
+    // &.active{
+    //     left: 0;
+    // }
 }
