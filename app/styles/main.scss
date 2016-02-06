@@ -1,50 +1,8 @@
 /**
  * Description: Data structure.
  * Version: 1.0.0
- * Author: Hugo Giraudel (http://sass-guidelin.es/) and adapted by Esteban Schmidt
- *
- *      sass/
- *      |
- *      |– base/
- *      |   |– _base.scss		 # Standar styles for commonly used HTML elements.
- *      |   |– _typography.scss  # Typography rules
- *      |   ...                  # Etc…
- *      |
- *      |– components/
- *      |   |– _buttons.scss     # Buttons
- *      |   |– _carousel.scss    # Carousel
- *      |   |– _cover.scss       # Cover
- *      |   |– _dropdown.scss    # Dropdown
- *      |   ...                  # Etc…
- *      |
- *      |– layout/
- *      |   |– _navigation.scss  # Navigation
- *      |   |– _grid.scss        # Grid system / pleas read http://neat.bourbon.io/
- *      |   |– _header.scss      # Header
- *      |   |– _footer.scss      # Footer
- *      |   |– _sidebar.scss     # Sidebar
- *      |   |– _forms.scss       # Forms
- *      |   ...                  # Etc…
- *      |
- *      |– pages/
- *      |   |– _home.scss        # Home specific styles
- *      |   |– _contact.scss     # Contact specific styles
- *      |   ...                  # Etc…
- *      |
- *      |– utils/
- *      |   |– _variables.scss   # Sass Variables
- *      |   |– _functions.scss   # Sass Functions
- *      |   |– _mixins.scss      # Sass Mixins / pleas read http://bourbon.io/docs/
- *      |   |– _placeholders.scss     # Class & placeholders helpers
- *      |
- *      |
- *      |
- *      `– main.scss             # primary Sass file
  */
 
- // README: http://sass-guidelin.es/
-
-// http://bourbon.io/docs/
 @import
 	'bourbon';
 
@@ -62,6 +20,7 @@
 	'base/base';
 
 @import
+	'layout/loader',
 	'layout/header';
 
 @import
