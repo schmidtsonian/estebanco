@@ -25,7 +25,7 @@ module common {
             var defer = $.Deferred();
             
             this.$result
-                .load(this.target, (r)=>{
+                .load(this.target, ()=>{
                     this._isOpen = true;
                     this.open_hook(defer);
                 });

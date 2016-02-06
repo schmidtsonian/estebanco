@@ -40,7 +40,7 @@ module index {
             var mainContainer = $("#main-container");
             this.HomeView = new HomeView("/index.html #container__home", mainContainer );
             this.AboutMeView = new View("/about-me/index.html #container__aboutme", mainContainer );
-            this.SomeCode = new View("/about-me/index.html #container__somecode", mainContainer );
+            this.SomeCode = new View("/some-code/index.html #container__somecode", mainContainer );
             
             this.viewManager.addView(MainViews.HomeView, this.HomeView );
             this.viewManager.addView(MainViews.AboutMeView, this.AboutMeView );
@@ -72,9 +72,9 @@ module index {
                     $("#button-menu").css({left: "0"});
                     if(isFirstLoad){
                         isFirstLoad = false;
-                        this.viewManager.currentView = this.AboutMeView;
+                        this.viewManager.currentView = this.SomeCode;
                     }else{
-                        this.viewManager.openView(MainViews.AboutMeView);
+                        this.viewManager.openView(MainViews.SomeCode);
                     }
                 })
                 .add(() =>{
