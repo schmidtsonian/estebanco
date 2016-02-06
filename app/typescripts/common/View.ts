@@ -21,11 +21,11 @@ module common {
         get isOpen(): boolean { return this._isOpen; }
 
         open(): JQueryPromise<{}> {
+            console.log("open!!!", this.target, this.$result)
             var defer = $.Deferred();
             
             this.$result
-                .load(this.target, ()=>{
-                    
+                .load(this.target, (r)=>{
                     this._isOpen = true;
                     this.open_hook(defer);
                 });

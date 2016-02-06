@@ -20,7 +20,7 @@ block body
                                 
                         p.subtitle <i> C</i><i> S</i><i> S</i><i> 3</i>
                     
-                    a#block-about.row(href="about-me/", title="About Me")
+                    a#block-about.row(href="about-me/", title="About Me", class="pushstate")
                         .bg.full-all
                             - for ( var i = 0; i <= 103; i++)
                                 .circle.center(id="c-#{i}")
@@ -32,7 +32,7 @@ block body
             
             .col.col-home
                 .rows-2.rows-home
-                     a#block-code.block-code.row(href="some-code/", title="Some Code")
+                     a#block-code.block-code.row(href="some-code/", title="Some Code", class="pushstate")
                         header
                             h2(class="center") Some <span>Code</span>
                      a#block-experiments.block-experiments.row(href="https://es.pinterest.com/schmidtsonian/some-experiments/", target="_blank", title="Some Experiments")

@@ -37,7 +37,7 @@ module index {
 
 		init ():void {
 			
-            var mainContainer = $("#container");
+            var mainContainer = $("#main-container");
             this.HomeView = new HomeView("/index.html #container__home", mainContainer );
             this.AboutMeView = new View("/about-me/index.html #container__aboutme", mainContainer );
             this.SomeCode = new View("/about-me/index.html #container__somecode", mainContainer );
@@ -59,7 +59,8 @@ module index {
             $("#main-navigation").removeClass("active");
             this.router
                 .add(/about-me/, () =>{
-                    
+                    $("#button-menu").css({left: "0"});
+                    console.log("!!!!")
                     if(isFirstLoad){
                         isFirstLoad = false;
                         this.viewManager.currentView = this.AboutMeView;
@@ -68,7 +69,7 @@ module index {
                     }
                 })
                 .add(/some-code/, () =>{
-                    
+                    $("#button-menu").css({left: "0"});
                     if(isFirstLoad){
                         isFirstLoad = false;
                         this.viewManager.currentView = this.AboutMeView;
@@ -87,10 +88,10 @@ module index {
                     }
                 })
                 .listen();
-            // $("a.pushstate").on("click", (e)=>{
-            //     e.preventDefault();
-            //     this.router.navigate($(e.target).attr("href"));
-            // })
+            $("a.pushstate").on("click", (e)=>{
+                e.preventDefault();
+                this.router.navigate($(e.currentTarget).attr("href"));
+            })
             this.router.check();
         }
 	}

@@ -3,8 +3,9 @@
 /// <reference path="index/IndexApp.ts" />
 
 import IndexApp = index.IndexApp;
+var app: IndexApp;
 $(function() {
 	
-	var app = new IndexApp();
+	app = new IndexApp();
 	app.init();
 });
