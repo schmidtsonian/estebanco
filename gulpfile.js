@@ -17,7 +17,7 @@ var connect = require('gulp-connect');
 
 var path = {
     scripts : {
-        src  : 'app/typescripts/*.ts',
+        src  : 'app/typescripts/**/*.ts',
         out  : 'main.js',
         dest : 'public/js/',
         vendor: 'vendor.js'
@@ -53,6 +53,7 @@ gulp.task('main-bower-files', function() {
 //watch all typescript files and reload on save
 gulp.task('scripts', function () {
     return gulp.src(path.scripts.src)
+        .pipe(gulpFilter(['*', '_*.*']))
         .pipe(sourcemaps.init())
         .pipe(ts({
             target: "ES5",

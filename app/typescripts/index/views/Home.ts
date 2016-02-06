@@ -48,22 +48,7 @@ module views{
                 .on("mouseenter", () => { tl.play(); })
                 .on("mouseleave", () => { tl.seek(0); tl.stop(); });
             $("#block-home").on("click", function() { $(this).toggleClass("active"); });
-			/*var blocks = $("#block-about .bg span.first");
 			
-			blocks.each( function(i, el) {
-				TweenLite.set($(el), {rotation: Math.floor((Math.random() * 10) + 360), x: Math.floor((Math.random() * 10) + 150), y: Math.floor((Math.random() * 10) + 300)} )
-			});
-			
-			tl.staggerTo(blocks, 0.18, {y:0, x: 0, force3D: true, rotation: 0, opacity: 0.9, ease:Quart.easeInOut }, 0.02, 0.1);
-			
-			$("#block-about")
-				.mouseenter( () => { tl.play(); })
-				.mouseleave( () => { tl.reverse() });
-			
-			blocks
-				.mouseenter( function() { TweenLite.to( $(this).find("span.second"), 0.25, {rotationY: 75, opacity: Math.random(), transformPerspective:200, transformOrigin:"left top", ease:Quart.easeInOut} ); } )
-				.mouseleave( function() { TweenLite.to( $(this).find("span.second"), 0.25, {rotationY: 0, opacity: Math.random(),  transformOrigin:"left top", ease:Quart.easeInOut} ); } );*/
-            
         }
     }
 }
