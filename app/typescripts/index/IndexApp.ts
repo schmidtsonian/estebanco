@@ -29,6 +29,8 @@ module index {
         private router:Router;
         private viewManager:ViewManager;
         
+        private mainMenu:MainMenu;
+        
         private HomeView:HomeView;
         private AboutMeView:View;
         private SomeCode:View;
@@ -40,6 +42,8 @@ module index {
 		}
 
 		init ():void {
+            
+            this.mainMenu = new MainMenu($("#button-menu"), $("#main-navigation"));
 			
             var mainContainer = $("#main-container");
             this.HomeView = new HomeView("/index.html #container__home", mainContainer );
@@ -50,21 +54,12 @@ module index {
             this.viewManager.addView(MainViews.AboutMeView, this.AboutMeView );
             this.viewManager.addView(MainViews.SomeCode, this.SomeCode );
             
-
-            $("#button-menu").on("click", function(){
-                $(this).toggleClass("active");
-                $("#main-navigation").toggleClass("active");
-            });
             
             var isFirstLoad = true;
             
-            $("#button-menu").css({left: "0"});
-            $("#button-menu").removeClass("active");
-            $("#main-navigation").removeClass("active");
             this.router
                 .add(/about-me/, () =>{
-                    $("#button-menu").css({left: "0"});
-                    console.log("!!!!")
+                    this.mainMenu.eneable();
                     if(isFirstLoad){
                         isFirstLoad = false;
                         this.viewManager.currentView = this.AboutMeView;
@@ -73,7 +68,7 @@ module index {
                     }
                 })
                 .add(/some-code/, () =>{
-                    $("#button-menu").css({left: "0"});
+                    this.mainMenu.eneable();
                     if(isFirstLoad){
                         isFirstLoad = false;
                         this.viewManager.currentView = this.SomeCode;
@@ -82,7 +77,7 @@ module index {
                     }
                 })
                 .add(() =>{
-                    $("#button-menu").css({left: "-60px"});
+                    this.mainMenu.diseable();
                     if(isFirstLoad){
                         isFirstLoad = false;
                         this.viewManager.currentView = this.HomeView;
@@ -92,7 +87,7 @@ module index {
                     }
                 })
                 .listen();
-            $("a.pushstate").on("click", (e)=>{
+            $(document).on("click", "a.pushstate", (e: JQueryEventObject) => {
                 e.preventDefault();
                 this.router.navigate($(e.currentTarget).attr("href"));
             })

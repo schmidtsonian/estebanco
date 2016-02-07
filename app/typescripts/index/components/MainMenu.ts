@@ -2,39 +2,55 @@ module components {
     
     export class MainMenu {
         
-        private bt: JQuery;
+        private btMenu: JQuery;
+        private btLinks: JQuery;
         private container: JQuery;
         
-        constructor(bt: JQuery, container: JQuery ){
+        private isOpened:boolean;
+        
+        constructor(bt: JQuery, container: JQuery){
             
-            this.bt = bt;
+            this.btMenu = bt;
             this.container = container;
+            this.btLinks = $("a.pushstate", this.container);
+            
+            this.isOpened = false;
+            
+            this.bind();
         }
         
         private bind():void{
             
-            this.bt.on("click", this.open.bind(this));
+            this.btMenu.on("click", this.toogleState.bind(this));
+            this.btLinks.on("click", this.close.bind(this));
         }
         
-        eneable():void{
-            this.bt.css({left: "0"});
+        private toogleState(): void{
+            if(this.isOpened){ this.close();
+            }else{ this.open(); }
         }
         
-        diseable():void{
-            this.bt.css({left: "-60px"});
-            this.container.css({left: "-100%"});
-        }
-        
-        open():void{
+        private open():void{
             
-            this.bt.addClass("active");
+            this.isOpened = true;
+            this.btMenu.addClass("active");
             this.container.addClass("active");
         }
         
-        close():void{
+        private close():void{
             
-            this.bt.removeClass("active");
+            this.isOpened = false;
+            this.btMenu.removeClass("active");
             this.container.removeClass("active");
+        }
+        
+        eneable():void{
+            this.btMenu.css({left: "0"});
+            
+        }
+        
+        diseable():void{
+            this.btMenu.css({left: "-60px"});
         }
     }
 }
