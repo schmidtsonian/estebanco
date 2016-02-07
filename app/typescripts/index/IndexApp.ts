@@ -5,6 +5,8 @@
 /// <reference path="../common/ViewManager.ts" />
 /// <reference path="../common/View.ts" />
 
+/// <reference path="components/MainMenu.ts" />
+
 /// <reference path="views/Home.ts" />
 
 module index {
@@ -12,6 +14,8 @@ module index {
     import Router = common.Router;
     import ViewManager = common.ViewManager;
     import View = common.View;
+    
+    import MainMenu = components.MainMenu;
     
     import HomeView = views.Home;
 
