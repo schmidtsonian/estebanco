@@ -47,12 +47,24 @@ module common {
          * @param  {JQueryDeferred<{}>} d
          * @returns void
          */
-        protected open_hook(d: JQueryDeferred<{}>): void { this.bind(); d.resolve(); }
+        protected open_hook(d: JQueryDeferred<{}>): void { 
+            this.bind(); 
+            d.resolve();
+            
+            TweenMax.to(this.$result, .45, {left: 0, ease: Cubic.easeIn, onComplete: ()=>{
+                d.resolve();
+            }});
+        }
         /**
          * @param  {JQueryDeferred<{}>} d
          * @returns void
          */
-        protected close_hook(d: JQueryDeferred<{}>): void { d.resolve(); }
+        protected close_hook(d: JQueryDeferred<{}>): void {
+            
+            TweenMax.to( this.$result, .45, {left: "-100%", ease: Cubic.easeOut, onComplete:()=>{
+                d.resolve(); 
+            }} ); 
+        }
         
         bind():void { }
         protected unbind():void { }
