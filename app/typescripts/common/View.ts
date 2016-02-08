@@ -27,7 +27,10 @@ module common {
             this.$result
                 .load(this.target, ()=>{
                     this._isOpen = true;
-                    this.open_hook(defer);
+                    TweenMax.to(this.$result, .45, {left: 0, ease: Cubic.easeIn, onComplete: ()=>{
+                        
+                        this.intro(defer);
+                    }});
                 });
                 
             return defer.promise();
@@ -38,7 +41,12 @@ module common {
             
             this.unbind();
             this._isOpen = false;
-            this.close_hook(defer);
+            
+            TweenMax.to( this.$result, .45, {left: "-100%", ease: Cubic.easeOut, onComplete:()=>{
+                this.$result.scrollTop(0);
+                this.departure(defer); 
+            }} );
+            
             
             return defer.promise();
         }
@@ -47,23 +55,17 @@ module common {
          * @param  {JQueryDeferred<{}>} d
          * @returns void
          */
-        protected open_hook(d: JQueryDeferred<{}>): void { 
+        protected intro(d: JQueryDeferred<{}>): void { 
             this.bind(); 
             d.resolve();
-            
-            TweenMax.to(this.$result, .45, {left: 0, ease: Cubic.easeIn, onComplete: ()=>{
-                d.resolve();
-            }});
         }
         /**
          * @param  {JQueryDeferred<{}>} d
          * @returns void
          */
-        protected close_hook(d: JQueryDeferred<{}>): void {
+        protected departure(d: JQueryDeferred<{}>): void {
             
-            TweenMax.to( this.$result, .45, {left: "-100%", ease: Cubic.easeOut, onComplete:()=>{
-                d.resolve(); 
-            }} ); 
+            d.resolve(); 
         }
         
         bind():void { }
