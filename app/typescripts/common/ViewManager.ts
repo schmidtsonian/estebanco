@@ -46,7 +46,6 @@ module common {
             if (this.currentView != null && (this.getViewById(id) === this.currentView)) {
                 var defer = $.Deferred();
                 defer.resolve();
-
                 return defer.promise();
             }
 

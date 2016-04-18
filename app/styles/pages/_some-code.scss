@@ -2,10 +2,10 @@ $g1: #113F8C;
 $g2: #01A4A4;
 $g3: #00A1CB;
 $g4: #61AE24;
-$g5: #D0D102;
-$g6: #32742C;
-$g7: #D70060;
-$g8: #E54028;
+$g5: #32742C;
+$g6: #D70060;
+$g7: #E54028;
+$g8: #D0D102;
 $g9: #F18D05;
 $g10: #616161;
 
@@ -13,6 +13,9 @@ $grid-colours: $g1, $g2, $g3, $g4, $g5, $g6, $g7, $g8, $g9, $g10;
 
 .container__somecode{
     header{background-color: $color-cream;}
+    h1{
+        opacity: 0;
+    }
     .grid{
         position: absolute;
         width: 100%;

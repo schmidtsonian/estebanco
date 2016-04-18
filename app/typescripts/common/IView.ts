@@ -5,8 +5,9 @@
 module common{
 
     export interface IView {
-        open():JQueryPromise<{}>;
-        close():JQueryPromise<{}>;
+        open(): JQueryPromise<{}>;
+        close(): JQueryPromise<{}>;
+        intro(d?: JQueryDeferred<{}>): JQueryPromise<{}>;
         isOpen:boolean;
     }
 }

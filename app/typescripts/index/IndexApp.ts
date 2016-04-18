@@ -8,6 +8,8 @@
 /// <reference path="components/MainMenu.ts" />
 
 /// <reference path="views/Home.ts" />
+/// <reference path="views/SomeCode.ts" />
+/// <reference path="views/AboutMe.ts" />
 
 module index {
     
@@ -18,11 +20,14 @@ module index {
     import MainMenu = components.MainMenu;
     
     import HomeView = views.Home;
+    import SomeCodeView = views.SomeCode;
+    import AboutMeView = views.AboutMe;
 
     export enum MainViews {
         HomeView,
+        SomeCodeView,
+
         AboutMeView,
-        SomeCode
     }
 	export class IndexApp {
 		
@@ -32,8 +37,8 @@ module index {
         private mainMenu:MainMenu;
         
         private HomeView:HomeView;
-        private AboutMeView:View;
-        private SomeCode:View;
+        private AboutMeView: AboutMeView;
+        private SomeCodeView: SomeCodeView;
         
 		constructor () {
             
@@ -47,22 +52,25 @@ module index {
 			
             var mainContainer = $("#main-container");
             this.HomeView = new HomeView("/index.html #container__home", mainContainer );
-            this.AboutMeView = new View("/about-me/index.html #container__aboutme", mainContainer );
-            this.SomeCode = new View("/some-code/index.html #container__somecode", mainContainer );
+            this.SomeCodeView = new SomeCodeView("/some-code/index.html #container__somecode", mainContainer);
+            this.AboutMeView = new AboutMeView("/about-me/index.html #container__aboutme", mainContainer);
             
             this.viewManager.addView(MainViews.HomeView, this.HomeView );
             this.viewManager.addView(MainViews.AboutMeView, this.AboutMeView );
-            this.viewManager.addView(MainViews.SomeCode, this.SomeCode );
+            this.viewManager.addView(MainViews.SomeCodeView, this.SomeCodeView);
             
             
+            
+            // TO-Do
+            // refactor!!
             var isFirstLoad = true;
-            
             this.router
                 .add(/about-me/, () =>{
                     this.mainMenu.eneable();
                     if(isFirstLoad){
                         isFirstLoad = false;
                         this.viewManager.currentView = this.AboutMeView;
+                        this.viewManager.currentView.intro();
                     }else{
                         this.viewManager.openView(MainViews.AboutMeView);
                     }
@@ -71,9 +79,10 @@ module index {
                     this.mainMenu.eneable();
                     if(isFirstLoad){
                         isFirstLoad = false;
-                        this.viewManager.currentView = this.SomeCode;
+                        this.viewManager.currentView = this.SomeCodeView;
+                        this.viewManager.currentView.intro();
                     }else{
-                        this.viewManager.openView(MainViews.SomeCode);
+                        this.viewManager.openView(MainViews.SomeCodeView);
                     }
                 })
                 .add(() =>{
@@ -81,7 +90,9 @@ module index {
                     if(isFirstLoad){
                         isFirstLoad = false;
                         this.viewManager.currentView = this.HomeView;
-                        this.HomeView.bind();
+                        this.viewManager.currentView
+                            .intro()
+                            .then( this.HomeView.bind );
                     }else{
                         this.viewManager.openView(MainViews.HomeView);
                     }

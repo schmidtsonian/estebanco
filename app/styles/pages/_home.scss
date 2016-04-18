@@ -111,14 +111,11 @@
           right: 35%;
        }
     }
-    
-    h1{
-       @include transition(all 0.45s $ease-in-out-cubic);
-    }
     h1:nth-child(1),
     h1:nth-child(3){
        opacity: 0;
        color: $color-red;
+       @include transition(all 0.45s $ease-in-out-cubic);
     }
     &.active,
     &:hover{
@@ -296,6 +293,11 @@
   @include transform(translateX(150px) translateY(50px) scale(0.1))
 }
 
+.container__home{
+  h1, h2{
+    opacity: 0;
+  }
+}
 @media screen and (max-width: 890px) {
     .container__home{
         .cols-2 .col{

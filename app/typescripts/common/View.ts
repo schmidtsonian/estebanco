@@ -21,16 +21,16 @@ module common {
         get isOpen(): boolean { return this._isOpen; }
 
         open(): JQueryPromise<{}> {
-            console.log("open!!!", this.target, this.$result)
+
             var defer = $.Deferred();
             
             this.$result
                 .load(this.target, ()=>{
                     this._isOpen = true;
-                    TweenMax.to(this.$result, .45, {left: 0, ease: Cubic.easeIn, onComplete: ()=>{
-                        
-                        this.intro(defer);
-                    }});
+
+                    // this.intro(defer);
+                    setTimeout(() => { this.intro(defer); }, 700);
+                    TweenMax.to(this.$result, .8, {left: 0, ease: Cubic.easeIn});
                 });
                 
             return defer.promise();
@@ -42,7 +42,7 @@ module common {
             this.unbind();
             this._isOpen = false;
             
-            TweenMax.to( this.$result, .45, {left: "-100%", ease: Cubic.easeOut, onComplete:()=>{
+            TweenMax.to( this.$result, .75, {left: "-100%", ease: Cubic.easeOut, onComplete:()=>{
                 this.$result.scrollTop(0);
                 this.departure(defer); 
             }} );
@@ -50,14 +50,17 @@ module common {
             
             return defer.promise();
         }
-        
+
         /**
          * @param  {JQueryDeferred<{}>} d
          * @returns void
          */
-        protected intro(d: JQueryDeferred<{}>): void { 
+        intro(d: JQueryDeferred<{}> = $.Deferred()): JQueryPromise<{}> {
+
             this.bind(); 
             d.resolve();
+
+            return d.promise();
         }
         /**
          * @param  {JQueryDeferred<{}>} d
@@ -68,6 +71,7 @@ module common {
             d.resolve(); 
         }
         
+        preRender():void { }
         bind():void { }
         protected unbind():void { }
     }

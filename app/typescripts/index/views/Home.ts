@@ -5,6 +5,7 @@ module views{
     export class Home extends common.View{
         
         bind():void {
+
             var tl = new TimelineMax({paused: true });
 			
 			tl.staggerTo(["#c-0", "#c-1"], 0.55, { borderRadius: "0", width: "600px", height: "600px", opacity: 1 }, 0.2);
@@ -48,7 +49,31 @@ module views{
                 .on("mouseenter", () => { tl.play(); })
                 .on("mouseleave", () => { tl.seek(0); tl.stop(); });
             $("#block-home").on("click", function() { $(this).toggleClass("active"); });
-			
+        }
+
+        intro(): JQueryPromise<{}> {
+
+			var d = $.Deferred();
+
+            TweenMax.set('#js-home-title, #js-home-title-about, #js-home-title-code, #js-home-title-experiments', { opacity: 0, x: -50 });
+
+            var tl = new TimelineMax({ paused: true, ease: Cubic.easeOut, onComplete: () => { d.resolve(); } });
+
+            tl.to( '#js-secundary-loader', .15, { opacity: 0 } );
+            tl.set( '#js-secundary-loader', { top: '-100%' } );
+
+            tl.staggerTo(
+            	[
+            		'#js-home-title',
+					'#js-home-title-about',
+					'#js-home-title-code',
+					'#js-home-title-experiments',
+				], 0.25, { opacity: 1, x: 0 }, 0.15);
+
+            tl.play();
+
+
+			return d.promise();
         }
     }
 }

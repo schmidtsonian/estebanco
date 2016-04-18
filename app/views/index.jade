@@ -15,8 +15,9 @@ block body
                             .center-right.block
                         
                         header
-                            - for ( var i = 1; i <= 3; i++)
-                                h1.center Estebanco
+                            h1.center Estebanco
+                            h1#js-home-title.center Estebanco
+                            h1.center Estebanco
                                 
                         p.subtitle <i> C</i><i> S</i><i> S</i><i> 3</i>
                     
@@ -26,7 +27,7 @@ block body
                                 .circle.center(id="c-#{i}")
                             
                         header
-                           h2.center About <span>Me</span>
+                           h2#js-home-title-about.center About <span>Me</span>
                         p.subtitle <i> G</i><i> R</i><i> E</i><i> E</i><i> N</i><i> S</i><i> O</i><i> C</i><i> K</i>
                     
             
@@ -34,9 +35,9 @@ block body
                 .rows-2.rows-home
                      a#block-code.block-code.row(href="some-code/", title="Some Code", class="pushstate")
                         header
-                            h2(class="center") Some <span>Code</span>
+                            h2#js-home-title-code(class="center") Some <span>Code</span>
                      a#block-experiments.block-experiments.row(href="https://es.pinterest.com/schmidtsonian/some-experiments/", target="_blank", title="Some Experiments")
-                            h2.center Some <span>Experiments</span>
+                            h2#js-home-title-experiments.center Some <span>Experiments</span>
                             
                      
                 
