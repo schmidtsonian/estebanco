@@ -1,26 +1,29 @@
 
-var gulp        = require('gulp');
-var gulpFilter  = require('gulp-filter')
-var concat      = require('gulp-concat');
-var uglify      = require('gulp-uglify');
-var sass        = require('gulp-sass');
-var jade        = require('gulp-jade');
-var ts          = require('gulp-typescript');
-var mainBowerFiles = require('gulp-main-bower-files');
-var bourbon     = require('node-bourbon');
+var gulp            = require('gulp');
+var gulpFilter      = require('gulp-filter')
+var concat          = require('gulp-concat');
+var uglify          = require('gulp-uglify');
+var sass            = require('gulp-sass');
+var jade            = require('gulp-jade');
+var ts              = require('gulp-typescript');
+var mainBowerFiles  = require('gulp-main-bower-files');
 
-var sourcemaps  = require('gulp-sourcemaps');
-var rename      = require('gulp-rename');
-var debug       = require('gulp-debug');
 
-var connect = require('gulp-connect');
+var sourcemaps      = require('gulp-sourcemaps');
+var rename          = require('gulp-rename');
+var debug           = require('gulp-debug');
+var plumber         = require('gulp-plumber');
+var bourbon         = require('node-bourbon');
+
+var connect         = require('gulp-connect');
 
 var path = {
     scripts : {
         src  : 'app/typescripts/**/*.ts',
         out  : 'main.js',
         dest : 'public/js/',
-        vendor: 'vendor.js'
+        vendor: 'vendor.js',
+        filter: ['*', '_*.*']
     },
     styles  : {
         src  : 'app/styles/**/*.scss',
@@ -28,8 +31,12 @@ var path = {
     },
     views   : {
         src  : 'app/views/**/*.jade',
-        dest : 'public/'
+        dest : 'public/',
+        filter: ['*', '**/*', '!_*.*', '!*/_*.*']
     },
+    bower   : {
+        src : './bower.json'
+    }
 };
 
 gulp.task('webserver', function() {
@@ -42,7 +49,7 @@ gulp.task('webserver', function() {
  
 
 gulp.task('main-bower-files', function() {
-    return gulp.src('./bower.json')
+    return gulp.src(path.bower.src)
         .pipe(mainBowerFiles( ))
         .pipe(uglify())
         .pipe(concat(path.scripts.vendor))
@@ -53,7 +60,7 @@ gulp.task('main-bower-files', function() {
 //watch all typescript files and reload on save
 gulp.task('scripts', function () {
     return gulp.src(path.scripts.src)
-        .pipe(gulpFilter(['*', '_*.*']))
+        .pipe(gulpFilter(path.scripts.filter))
         .pipe(sourcemaps.init())
         .pipe(ts({
             target: "ES5",
@@ -79,14 +86,13 @@ gulp.task('styles', function () {
         .pipe(connect.reload());
 });
 
-gulp.task('views', function() {
-    return gulp.src(path.views.src)
-            .pipe(jade({
-                pretty: true
-            }))
-            .pipe(gulpFilter(['*', '*/*', '!_*.*', '!*/_*.*']))
-            .pipe(gulp.dest(path.views.dest))
-            .pipe(connect.reload());
+gulp.task( 'views', function() {
+    return gulp.src( path.views.src )
+        .pipe( plumber() )
+        .pipe( jade( {pretty: true } ))
+        .pipe( gulpFilter( path.views.filter ))
+        .pipe( gulp.dest( path.views.dest ))
+        .pipe( connect.reload() );
 });
 
 gulp.task('watch', function () {

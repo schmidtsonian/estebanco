@@ -1,74 +1,36 @@
 extends ../layouts/_index.jade
 
+mixin block(number, href, title, subtitle, tags)
+    a(href=href, target='_blank', title=title, class='block--#{number}').block.flex-container
+        h2=title
+        h3=subtitle
+        ul
+            each tag in tags
+                li 
+                    | #
+                    =tag
+
 block body
     #container__somecode.container__somecode
         header.full.flex-container
             h1#js-somecode-title.half Some <span>Code</span>
         .grid
-            a(href="https://github.com/schmidtsonian/Games/", target="_blank". title="Falling Skyes").block.block--1.flex-container
-                h2 Falling Skyes
-                h3 Cross mobile game excercice
-                ul
-                    li #CoronaSDK
-                    li #GitHub
-            a(href="http://codepen.io/schmidtsonian/pen/GodGNj", target="_blank". title="Chipmunk CSS").block.block--2.flex-container
-                h2 Chipmunk CSS
-                h3 Drawing with pure CSS excercice
-                ul
-                    li #CSS
-                    li #Codepen
-            a(href="https://github.com/schmidtsonian/estebanco", target="_blank". title="estebanco.com source code").block.block--3.flex-container
-                h2 estebanco.com source code
-                h3 Personal page experiment
-                ul
-                    li #css
-                    li #html
-                    li #typescript
-            a(href="https://github.com/schmidtsonian/elixir", target="_blank". title="Elixir Journal").block.block--4.flex-container
-                h2 Elixir Journal
-                h3 Functional programming paradigm
-                ul
-                    li #Elixir
-                    li #Vagrant
-                    li #GitHub
-            a(href="https://github.com/schmidtsonian/split-flap-display", target="_blank". title="Split Flap Display").block.block--5.flex-container
-                h2 Split Flap Display
-                h3 Arduino experiment with stepper mothor
-                ul
-                    li #Arduino
-            a(href="https://github.com/schmidtsonian/portfolio-free-wordpress-theme", target="_blank". title="Free wordpress theme 'Portfolio'").block.block--6.flex-container
-                h2 Free wordpress theme "Portfolio"
-                h3 Hijax theme for wordpress
-                ul
-                    li #Hijax
-                    li #scss
-                    li #Wordpress
-                    li #Github
-            // a(href="#", target="_blank". title="").block.block--7.flex-container
-            //     h2 title 7
-            //     h3 description
-            //     ul
-            //         li #tag1
-            //         li #tag2
-            //         li #tag3
-            // a(href="#", target="_blank". title="").block.block--8.flex-container
-            //     h2 title 8
-            //     h3 description
-            //     ul
-            //         li #tag1
-            //         li #tag2
-            //         li #tag3
-            // a(href="#", target="_blank". title="").block.block--9.flex-container
-            //     h2 title 9
-            //     h3 description
-            //     ul
-            //         li #tag1
-            //         li #tag2
-            //         li #tag3
-            // a(href="#", target="_blank". title="").block.block--10.flex-container
-            //     h2 title 10
-            //     h3 description
-            //     ul
-            //         li #tag1
-            //         li #tag2
-            //         li #tag3
+            +block(1, 'https://github.com/schmidtsonian/Games/', 'Falling Skyes', 'Cross mobile game excercice', ['CoronaSDK', 'GitHub'])
+
+            +block(2, 'http://codepen.io/schmidtsonian/pen/GodGNj', 'Chipmunk CSS', 'Drawing with pure CSS excercice', ['CSS', 'Codepen'])
+
+            +block(3, 'https://github.com/schmidtsonian/estebanco', 'estebanco.com source code', 'Personal page experiment', ['SCSS', 'Jade', 'Typescript', 'GitHub'])
+
+            +block(4, 'https://github.com/schmidtsonian/elixir', 'Elixir Journal', 'Functional programming paradigm', ['Elixir', 'Vagrant', 'GitHub'] )
+            
+            +block(5, 'https://github.com/schmidtsonian/portfolio-free-wordpress-theme', 'Free wordpress theme "Portfolio"', 'Hijax theme for wordpress', ['HiJax', 'SCSS', 'Wordpress', 'GitHub'])
+
+            +block(6, 'https://github.com/schmidtsonian/landing-page', 'Landing Page', 'Free Source code for a Landing Page', ['CodeKit', 'SCSS', 'Jade', 'Typescript', 'GitHub'] )
+
+            +block(7, 'https://github.com/schmidtsonian/walk-alone', 'Walk Alone', 'Game experiment HTML', ['Typescript', 'SCSS', 'Jade', 'GitHub'])
+
+            +block(8, 'http://codepen.io/schmidtsonian/pen/VadmYP', 'Loader', 'Loader experiment vanilla JS', ['Javascript', 'Codepen'])
+
+            +block(9, 'http://codepen.io/schmidtsonian/pen/VadmYP', 'Loader', 'Loader experiment vanilla JS', ['Javascript', 'Codepen'])
+
+            +block(10, 'http://codepen.io/schmidtsonian/pen/pbvEZg', 'The fourth seasons', 'Low poly tree CSS experiment', ['CSS', 'Codepen'])
